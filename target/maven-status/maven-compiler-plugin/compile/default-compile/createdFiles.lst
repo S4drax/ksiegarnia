@@ -1,0 +1,8 @@
+ksiegarnia\ksiegarnia\Author\AuthorController.class
+ksiegarnia\ksiegarnia\Book\Book.class
+ksiegarnia\ksiegarnia\Author\AuthorRepo.class
+ksiegarnia\ksiegarnia\Book\BookController.class
+ksiegarnia\ksiegarnia\DatabaseSeeder.class
+ksiegarnia\ksiegarnia\Author\Author.class
+ksiegarnia\ksiegarnia\KsiegarniaApplication.class
+ksiegarnia\ksiegarnia\Book\BookRepo.class
