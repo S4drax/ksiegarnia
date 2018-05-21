@@ -3,6 +3,7 @@ package ksiegarnia.ksiegarnia.Author;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class AuthorController {
     /**
      * Find all authors
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Author> getAll() {
         return authorRepo.findAll();
     }
@@ -27,26 +28,31 @@ public class AuthorController {
     /**
      * Find all authors with specific name
      */
-    @RequestMapping(value = "/name/{im}", method = RequestMethod.GET)
-    public List<Author> getName(@PathVariable String im) {
-        return authorRepo.findByname(im);
+    @RequestMapping(value = "/name={name}", method = RequestMethod.GET)
+    public List<Author> getName(@PathVariable String name) {
+        return authorRepo.findByname(name);
     }
 
-    /**
-     * Add a new author record to the database
-     */
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public List<Author> create(@RequestBody Author author) {
-        authorRepo.save(author);
-        return authorRepo.findAll();
+    @RequestMapping(value = "/id={authorId}", method = RequestMethod.GET)
+    public List<Author> getAuthorId(@PathVariable Long authorId) {
+        return authorRepo.findByauthorId(authorId);
     }
-
-    /**
-     * Update an existing record
+     /**
+     * Update an existing record or create a new one if it doesnt exist
      */
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public List<Author> update(@RequestBody Author author) {
         authorRepo.save(author);
         return authorRepo.findAll();
+    }
+    /**
+     *  Delete an existing record by book id
+     */
+    @Transactional
+    @RequestMapping(value = "/delete={authorId}", method = RequestMethod.DELETE)
+    public List<Author> deleteByauthorId(@PathVariable Long authorId) {
+        authorRepo.deleteByauthorId(authorId);
+        return authorRepo.findAll();
+
     }
 }

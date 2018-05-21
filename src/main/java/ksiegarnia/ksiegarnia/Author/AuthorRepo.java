@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface AuthorRepo extends JpaRepository<Author, Long>{
     List<Author> findByname(String name);
+    List<Author> findByauthorId (Long authorId);
+    List<Author> deleteByauthorId (Long authorId);
 }

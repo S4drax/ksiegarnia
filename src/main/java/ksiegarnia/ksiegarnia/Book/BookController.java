@@ -2,6 +2,7 @@ package ksiegarnia.ksiegarnia.Book;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class BookController {
     /**
      * Find all books
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Book> getAll() {
         return bookRepo.findAll();
     }
@@ -24,7 +25,7 @@ public class BookController {
     /**
      * Find all books with specific title
      */
-    @RequestMapping(value = "/title/{title}", method = RequestMethod.GET)
+    @RequestMapping(value = "/title={title}", method = RequestMethod.GET)
     public List<Book> getTitle(@PathVariable String title) {
         return bookRepo.findBytitle(title);
     }
@@ -32,26 +33,27 @@ public class BookController {
     /**
      * Find all books of an author with specific id
      */
-    @RequestMapping(value = "/authorId/{authorId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/id={authorId}", method = RequestMethod.GET)
     public List<Book> getAuthorId(@PathVariable Long authorId) {
         return bookRepo.findByauthorId(authorId);
     }
-
     /**
-     * Add a new book record to the database
+     * Update an existing record or create new if it doesn't exist
      */
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public List<Book> create(@RequestBody Book book) {
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    public List<Book> update(@RequestBody Book book) {
         bookRepo.save(book);
         return bookRepo.findAll();
     }
 
     /**
-     * Update an existing record
+     *  Delete an existing record by book id
      */
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public List<Book> update(@RequestBody Book book) {
-        bookRepo.save(book);
+    @Transactional
+    @RequestMapping(value = "/delete={bookId}", method = RequestMethod.DELETE)
+    public List<Book> deleteBybookId(@PathVariable Long bookId) {
+        bookRepo.deleteBybookId(bookId);
         return bookRepo.findAll();
+
     }
 }

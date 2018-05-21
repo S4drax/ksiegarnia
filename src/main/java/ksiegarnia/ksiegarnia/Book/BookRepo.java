@@ -11,4 +11,5 @@ import java.util.List;
 public interface BookRepo extends JpaRepository<Book, Long> {
     List<Book> findBytitle(String title);
     List<Book> findByauthorId (Long authorId);
+    List<Book> deleteBybookId (Long bookId);
 }

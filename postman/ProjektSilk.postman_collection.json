@@ -6,20 +6,20 @@
 	},
 	"item": [
 		{
-			"name": "localhost:8080/Authors/all",
+			"name": "Show all authors",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Authors/all",
+					"raw": "localhost:8080/Authors/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Authors",
-						"all"
+						""
 					]
 				},
 				"description": "Show all authors"
@@ -27,21 +27,20 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Authors/name/George",
+			"name": "Search for author with specific name",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Authors/name/George",
+					"raw": "localhost:8080/Authors/name=George",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Authors",
-						"name",
-						"George"
+						"name=George"
 					]
 				},
 				"description": "Show authors of certain name (example: George)"
@@ -49,9 +48,9 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Authors/create",
+			"name": "Create an author",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "application/json",
@@ -68,14 +67,14 @@
 					"raw": "{\"authorId\":4,\"name\":\"Lukasz\",\"surname\":\"Baranski\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/Authors/create",
+					"raw": "localhost:8080/Authors/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Authors",
-						"create"
+						""
 					]
 				},
 				"description": "add a new author"
@@ -83,7 +82,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Authors/update",
+			"name": "Update an existing author with specific id",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -94,17 +93,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"authorId\":4,\"name\":\"Lukasz2\",\"surname\":\"Baranski\"}"
+					"raw": "{\"authorId\":85,\"name\":\"Lukasz2\",\"surname\":\"Baranski\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/Authors/update",
+					"raw": "localhost:8080/Authors/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Authors",
-						"update"
+						""
 					]
 				},
 				"description": "update an author record"
@@ -112,20 +111,40 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Books/all",
+			"name": "Delete an author with specific id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/Authors/delete=203",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Authors",
+						"delete=203"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show all books",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Books/all",
+					"raw": "localhost:8080/Books/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"all"
+						""
 					]
 				},
 				"description": "Show all the books"
@@ -133,21 +152,20 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Books/title/hobbit",
+			"name": "Show book with specific title",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Books/title/hobbit",
+					"raw": "localhost:8080/Books/title=hobbit",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"title",
-						"hobbit"
+						"title=hobbit"
 					]
 				},
 				"description": "Show a book of a specific title (example: hobbit)"
@@ -155,21 +173,20 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Books/authorID/2",
+			"name": "Search by books made by an author with specific name",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Books/authorId/2",
+					"raw": "localhost:8080/Books/id=2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"authorId",
-						"2"
+						"id=2"
 					]
 				},
 				"description": "Show books of certain author by authorId"
@@ -177,9 +194,9 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Books/create",
+			"name": "Create a book",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -191,14 +208,14 @@
 					"raw": "{\"bookId\":100, \"authorId\":4,\"title\":\"biography\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/Books/create",
+					"raw": "localhost:8080/Books/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"create"
+						""
 					]
 				},
 				"description": "Create a new book"
@@ -206,7 +223,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/Books/update",
+			"name": "Update an existing book",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -217,20 +234,40 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"bookId\":100,\"authorId\":4,\"title\":\"biography1990\"}"
+					"raw": "{\"bookId\":86,\"authorId\":4,\"title\":\"biography1990\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/Books/update",
+					"raw": "localhost:8080/Books/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"update"
+						""
 					]
 				},
 				"description": "update a book record"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an author with specific id Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/Books/delete=203",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Books",
+						"delete=203"
+					]
+				}
 			},
 			"response": []
 		}
