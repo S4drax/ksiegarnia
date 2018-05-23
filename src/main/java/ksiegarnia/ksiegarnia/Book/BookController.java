@@ -18,18 +18,13 @@ public class BookController {
      * Find all books
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Book> getAll() {
-        return bookRepo.findAll();
+    public List<Book> getAll(@RequestParam(value="title", required=false) String title) {
+        if(title==null) {
+            return bookRepo.findAll();
+        } else {
+            return bookRepo.findBytitle(title);
+        }
     }
-
-    /**
-     * Find all books with specific title
-     */
-    @RequestMapping(value = "/title={title}", method = RequestMethod.GET)
-    public List<Book> getTitle(@PathVariable String title) {
-        return bookRepo.findBytitle(title);
-    }
-
     /**
      * Find all books of an author with specific id
      */
@@ -50,7 +45,7 @@ public class BookController {
      *  Delete an existing record by book id
      */
     @Transactional
-    @RequestMapping(value = "/delete={bookId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{bookId}", method = RequestMethod.DELETE)
     public List<Book> deleteBybookId(@PathVariable Long bookId) {
         bookRepo.deleteBybookId(bookId);
         return bookRepo.findAll();

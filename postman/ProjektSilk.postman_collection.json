@@ -12,13 +12,13 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Authors/",
+					"raw": "localhost:8080/Author/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"Authors",
+						"Author",
 						""
 					]
 				},
@@ -33,14 +33,20 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Authors/name=George",
+					"raw": "localhost:8080/Author/?name=George",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"Authors",
-						"name=George"
+						"Author",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "George"
+						}
 					]
 				},
 				"description": "Show authors of certain name (example: George)"
@@ -67,13 +73,13 @@
 					"raw": "{\"authorId\":4,\"name\":\"Lukasz\",\"surname\":\"Baranski\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/Authors/",
+					"raw": "localhost:8080/Author/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"Authors",
+						"Author",
 						""
 					]
 				},
@@ -96,13 +102,13 @@
 					"raw": "{\"authorId\":85,\"name\":\"Lukasz2\",\"surname\":\"Baranski\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/Authors/",
+					"raw": "localhost:8080/Author/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"Authors",
+						"Author",
 						""
 					]
 				},
@@ -117,14 +123,14 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Authors/delete=203",
+					"raw": "localhost:8080/Author/215",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"Authors",
-						"delete=203"
+						"Author",
+						"215"
 					]
 				}
 			},
@@ -158,14 +164,20 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Books/title=hobbit",
+					"raw": "localhost:8080/Books/?title=hobbit",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"title=hobbit"
+						""
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "hobbit"
+						}
 					]
 				},
 				"description": "Show a book of a specific title (example: hobbit)"
@@ -252,20 +264,20 @@
 			"response": []
 		},
 		{
-			"name": "Delete an author with specific id Copy",
+			"name": "Delete a book with specific id",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:8080/Books/delete=203",
+					"raw": "localhost:8080/Books/205",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"Books",
-						"delete=203"
+						"205"
 					]
 				}
 			},

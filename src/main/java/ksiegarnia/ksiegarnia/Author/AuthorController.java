@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/Authors")
+@RequestMapping(value = "/Author")
 public class AuthorController {
 
 
@@ -21,16 +21,12 @@ public class AuthorController {
      * Find all authors
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Author> getAll() {
-        return authorRepo.findAll();
-    }
-
-    /**
-     * Find all authors with specific name
-     */
-    @RequestMapping(value = "/name={name}", method = RequestMethod.GET)
-    public List<Author> getName(@PathVariable String name) {
-        return authorRepo.findByname(name);
+    public List<Author> getAll(@RequestParam(value="name", required=false) String name) {
+        if(name==null) {
+            return authorRepo.findAll();
+        } else {
+            return authorRepo.findByname(name);
+        }
     }
 
     @RequestMapping(value = "/id={authorId}", method = RequestMethod.GET)
@@ -49,7 +45,7 @@ public class AuthorController {
      *  Delete an existing record by book id
      */
     @Transactional
-    @RequestMapping(value = "/delete={authorId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{authorId}", method = RequestMethod.DELETE)
     public List<Author> deleteByauthorId(@PathVariable Long authorId) {
         authorRepo.deleteByauthorId(authorId);
         return authorRepo.findAll();
